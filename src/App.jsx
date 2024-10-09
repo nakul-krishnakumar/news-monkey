@@ -1,32 +1,36 @@
 import "./App.css";
-import { Component } from "react";
 import NavBar from "./components/NavBar";
 import News from "./components/News";
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route
-} from "react-router-dom"
+import LoadingBar from 'react-top-loading-bar';
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-export default class App extends Component {
-    pageSize = 15;
-    render() {
-        return ( 
-            <div>
-                <Router>
-                    <NavBar />
-                    <Routes>
-                        <Route exact path="/" element={<News key="general" pageSize={this.pageSize} category={"general"}/>} />
-                        <Route exact path="/business" element={<News key="business" pageSize={this.pageSize} category={"business"}/>} />
-                        <Route exact path="/entertainment" element={<News key="entertainment" pageSize={this.pageSize} category={"entertainment"}/>} />
-                        <Route exact path="/health" element={<News key="health" pageSize={this.pageSize} category={"health"}/>} />
-                        <Route exact path="/science" element={<News key="science" pageSize={this.pageSize} category={"science"}/>} />
-                        <Route exact path="/sports" element={<News key="sports" pageSize={this.pageSize} category={"sports"}/>} />
-                        <Route exact path="/technology" element={<News key="technology" pageSize={this.pageSize} category={"technology"}/>} />
+const App = () => {
+    const pageSize = 15;
 
-                    </Routes>
-                </Router>
-            </div>
-        );
-    }
+    const [progress, setProgress] = useState(0);
+    return (
+        <div>
+            <Router>
+                <NavBar />
+                <LoadingBar
+                    color='#f11946'
+                    progress={progress}
+                />
+                <Routes>
+                    <Route exact path="/" element={<News key="general" pageSize={pageSize} category={"general"} setProgress={setProgress} />} />
+                    <Route exact path="/business" element={<News key="business" pageSize={pageSize} category={"business"} setProgress={setProgress} />} />
+                    <Route exact path="/entertainment" element={<News key="entertainment" pageSize={pageSize} category={"entertainment"} setProgress={setProgress} />} />
+                    <Route exact path="/health" element={<News key="health" pageSize={pageSize} category={"health"} setProgress={setProgress} />} />
+                    <Route exact path="/science" element={<News key="science" pageSize={pageSize} category={"science"} setProgress={setProgress} />} />
+                    <Route exact path="/sports" element={<News key="sports" pageSize={pageSize} category={"sports"} setProgress={setProgress} />} />
+                    <Route exact path="/technology" element={<News key="technology" pageSize={pageSize} category={"technology"} setProgress={setProgress} />} />
+
+                </Routes>
+            </Router>
+        </div>
+    );
+
 }
+
+export default App;
