@@ -17,7 +17,7 @@ const News = (props) => {
     const updateNews = async () => {
         props.setProgress(50); //top-loading-bar
 
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=699cb030c1104da8adc85ba79ccb2664&page=${page}&pageSize=${props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=785390bcf5cd458d8dd187081b5bb1db&page=${page}&pageSize=${props.pageSize}`;
         
         setLoading(true);
 
@@ -42,7 +42,7 @@ const News = (props) => {
     const fetchMoreData = async () => {
         setPage(page+1);
 
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=699cb030c1104da8adc85ba79ccb2664&page=${page+1}&pageSize=${props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=785390bcf5cd458d8dd187081b5bb1db&page=${page+1}&pageSize=${props.pageSize}`;
         
         setLoading(true);
 
